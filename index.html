@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yash Panchal | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b1224;
+      --panel: #0f1b33;
+      --panel-2: #0f223f;
+      --accent: #f97316;
+      --muted: #cdd6f4;
+      --text: #e8ecf7;
+      --mono: #9fb3c8;
+      --border: rgba(255, 255, 255, 0.06);
+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(249, 115, 22, 0.08), transparent 35%),
+        radial-gradient(circle at 80% 10%, rgba(59, 130, 246, 0.08), transparent 30%),
+        linear-gradient(145deg, #050a17, #0b1224 45%, #0b1328 100%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 32px 20px 48px;
+    }
+
+    a { color: var(--text); text-decoration: none; }
+    a:hover { color: var(--accent); }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      gap: 18px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--panel), var(--panel-2));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 0%, rgba(249, 115, 22, 0.16), transparent 35%);
+      pointer-events: none;
+    }
+
+    .top-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 16px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .name {
+      font-size: clamp(28px, 4vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .location {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      color: var(--mono);
+      font-weight: 500;
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+    }
+
+    .pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--text);
+      transition: transform 120ms ease, border-color 120ms ease, color 120ms ease;
+    }
+
+    .pill:hover { transform: translateY(-1px); border-color: rgba(249, 115, 22, 0.6); color: var(--accent); }
+
+    .summary {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 16px;
+      max-width: 860px;
+    }
+
+    section {
+      background: rgba(15, 27, 51, 0.8);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      letter-spacing: 0.01em;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    .accent-bar {
+      width: 6px;
+      height: 18px;
+      border-radius: 4px;
+      background: linear-gradient(135deg, var(--accent), #fbbf24);
+    }
+
+    .cards { display: grid; gap: 12px; }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    }
+
+    .card-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .card-title { font-weight: 600; font-size: 16px; }
+    .card-meta { color: var(--mono); font-size: 14px; }
+
+    ul { margin: 8px 0 0 18px; color: var(--muted); line-height: 1.55; padding: 0; }
+    li + li { margin-top: 4px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .chip-set { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+    .chip {
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--mono);
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 20px 14px 32px; }
+      header, section { padding: 18px; }
+      .card { padding: 14px; }
+      .top-row { gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div class="top-row">
+        <div>
+          <div class="name">Yash Panchal</div>
+          <div class="location">Mumbai, India</div>
+        </div>
+        <div class="contact">
+          <a class="pill" href="tel:+919004168049">+91 9004168049</a>
+          <a class="pill" href="mailto:panchalyash089@gmail.com">panchalyash089@gmail.com</a>
+          <a class="pill" href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="pill" href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+      <p class="summary">
+        Backend Java Developer with hands-on experience building REST APIs, integrating MySQL and MongoDB, and crafting backend modules with Java, Spring Boot, Hibernate, and JDBC. Skilled in debugging, API testing with Postman, and writing clean, efficient, and maintainable code using industry-standard practices.
+      </p>
+    </header>
+
+    <section>
+      <div class="section-title"><span class="accent-bar"></span>Work Experience</div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Polycruz — Backend Developer (Intern)</div>
+            <div class="card-meta">May 2025 – Present</div>
+          </div>
+          <ul>
+            <li>Developing and maintaining RESTful APIs using Java and Spring Boot, improving endpoints, validations, and overall request/response structure.</li>
+            <li>Integrating APIs for an NFT trading platform and ensuring secure, efficient data flow between backend services.</li>
+            <li>Writing clean modular code with layered architecture, performing API testing and debugging in Postman, and managing CRUD operations in MySQL and MongoDB.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Shrinathji Industries — Administrator</div>
+            <div class="card-meta">Mumbai · July 2023 – Jan 2025</div>
+          </div>
+          <ul>
+            <li>Provided administrative support to the management team, including scheduling appointments, managing correspondence, and maintaining office supplies.</li>
+            <li>Managed daily operations including payroll, records, and vendor communication; implemented digital record-keeping systems improving accuracy and reporting.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><span class="accent-bar"></span>Project</div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">JournalApp — Backend</div>
+            <div class="card-meta">Aug 2025 – Nov 2025</div>
+          </div>
+          <div class="chip-set">
+            <span class="chip">Java 17</span>
+            <span class="chip">Spring Boot 3.5</span>
+            <span class="chip">Spring Security</span>
+            <span class="chip">MongoDB</span>
+            <span class="chip">Redis Cache</span>
+            <span class="chip">JWT + Google OAuth</span>
+            <span class="chip">Maven</span>
+            <span class="chip">Swagger/OpenAPI</span>
+          </div>
+          <ul>
+            <li>Built a backend that lets users securely sign up, log in, and manage personal journal entries with JWT and Google OAuth2 authentication.</li>
+            <li>Integrated MongoDB as the primary database, handling collections, indexing, and optimized queries.</li>
+            <li>Added Swagger/OpenAPI for interactive API documentation, improving API discoverability.</li>
+            <li>Performed API testing, validation, and debugging using Postman to ensure correctness and stability.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><span class="accent-bar"></span>Education</div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Master of Science, Computer Science — Nagindas Khandwala College (Mumbai University)</div>
+            <div class="card-meta">July 2021 – June 2023 · CGPA: 9.59</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Bachelor of Science, Computer Science — Nagindas Khandwala College (Mumbai University)</div>
+            <div class="card-meta">July 2018 – June 2021 · CGPA: 8.46</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><span class="accent-bar"></span>Technical & Soft Skills</div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-title">Programming Languages</div>
+          <div class="chip-set">
+            <span class="chip">Java</span>
+            <span class="chip">Python</span>
+            <span class="chip">SQL</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Backend & Frameworks</div>
+          <div class="chip-set">
+            <span class="chip">Spring Boot</span>
+            <span class="chip">Spring MVC</span>
+            <span class="chip">REST APIs</span>
+            <span class="chip">JDBC</span>
+            <span class="chip">Hibernate</span>
+            <span class="chip">Microservices (Basics)</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Tools</div>
+          <div class="chip-set">
+            <span class="chip">VS Code</span>
+            <span class="chip">IntelliJ IDEA</span>
+            <span class="chip">NetBeans</span>
+            <span class="chip">Cursor</span>
+            <span class="chip">Postman</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Version Control</div>
+          <div class="chip-set">
+            <span class="chip">Git</span>
+            <span class="chip">GitLab</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Databases</div>
+          <div class="chip-set">
+            <span class="chip">MySQL</span>
+            <span class="chip">MongoDB</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Soft Skills</div>
+          <div class="chip-set">
+            <span class="chip">Communication</span>
+            <span class="chip">Problem-solving</span>
+            <span class="chip">Teamwork</span>
+            <span class="chip">Attention to detail</span>
+            <span class="chip">Time management</span>
+            <span class="chip">Creativity</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">AI Tools</div>
+          <div class="chip-set">
+            <span class="chip">Copilot</span>
+            <span class="chip">ChatGPT</span>
+            <span class="chip">Google Gemini</span>
+            <span class="chip">Claude</span>
+            <span class="chip">Perplexity AI</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><span class="accent-bar"></span>Coursework</div>
+      <div class="cards">
+        <div class="card">
+          <ul>
+            <li>Cognitive Class.ai – SQL and Relational Database 101</li>
+            <li>Rajesh Patkar Institute of Software Engineering – Proficiency in Java Technology</li>
+            <li>Great Learning – Java Programming, JDBC in Java</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><span class="accent-bar"></span>Volunteering</div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">BAPS Socio-Spiritual Organization — Bal Karyakar</div>
+            <div class="card-meta">2011 – Present</div>
+          </div>
+          <ul>
+            <li>Teach children about spirituality, moral values, and personality development as an active volunteer.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><span class="accent-bar"></span>Achievements</div>
+      <div class="cards">
+        <div class="card">
+          <ul>
+            <li>Secured 1st Rank in Semester 1 of Master of Science (Apr 2023).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">Portfolio · Updated for 2026 · Open to backend opportunities</div>
+  </main>
+</body>
+</html>
